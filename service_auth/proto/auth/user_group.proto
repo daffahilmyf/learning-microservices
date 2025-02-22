@@ -1,0 +1,38 @@
+syntax = "proto3";
+package proto.auth;
+
+option go_package = "proto/auth";
+
+message UserGroup {
+    string user_id = 1;
+    string group_id = 2;
+}
+
+message FindAllUserGroupRequest {
+    string session_user_id = 1;
+    string user_id = 2;
+}
+
+message FindUserGroupRequest {
+    string session_user_id = 1;
+    string user_id = 2;
+    string group_id = 3;
+}
+
+message FindAllUserGroupResponse {
+    string session_user_id = 1;
+    string user_id = 2;
+    string group_id = 3;
+}
+
+message CreateUserGroupRequest {
+    string session_user_id = 1;
+    string user_id = 2;
+    string group_id = 3;
+}
+
+message DeleteUserGroupRequest {
+    string session_user_id = 1;
+    string user_id = 2;
+    string group_id = 3;
+}

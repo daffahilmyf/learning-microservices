@@ -1,0 +1,29 @@
+syntax = "proto3";
+package proto.auth;
+
+option go_package = "proto/auth";
+
+message Group {
+    string id = 1;
+    string name = 2;
+}
+
+message FindGroupByIDRequest {
+    string session_user_id = 1;
+    string id = 2;
+}
+
+message FindGroupByNameRequest {
+    string session_user_id = 1;
+    string name = 2;
+}
+
+message CreateGroupRequest {
+    string session_user_id = 1;
+    string name = 2;
+}
+
+message DeleteGroupRequest {
+    string session_user_id = 1;
+    string id = 2;
+}

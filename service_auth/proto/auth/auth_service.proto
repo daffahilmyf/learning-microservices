@@ -1,0 +1,46 @@
+syntax = "proto3";
+package proto.auth;
+
+option go_package = "proto/auth";
+
+import "auth/auth.proto";
+import "auth/group.proto";
+import "auth/group_permission.proto";
+import "auth/permission.proto";
+import "auth/user_group.proto";
+import "auth/user.proto";
+
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/empty.proto";
+
+
+service AuthService {
+    // Auth Service
+    rpc GetUserInfo(GetUserInfoRequest) returns (User) {}
+    rpc HasAcess(HasAccessRequest) returns (google.protobuf.BoolValue){}
+    rpc RefreshToken(RefreshTokenRequest) returns (AuthResponse){}
+
+
+    // User Service
+    rpc Login(LoginRequest) returns (AuthResponse) {}
+    rpc Register(RegisterRequest) returns (AuthResponse) {}
+    rpc Logout(LogoutRequest) returns (google.protobuf.Empty) {}
+
+    // Group Service
+    rpc FindPermissionByID(FindPermissionByIDRequest) returns (Permission) {}
+    rpc FindPermissionByName(FindPermissionByNameRequest) returns (Permission) {}
+    rpc CreatePermission(CreatePermissionRequest) returns (Permission) {}
+    rpc DeletePermission(DeletePermissionRequest) returns (google.protobuf.Empty) {}
+
+
+    // Group Permission
+    rpc FindGroupPermission(FindGroupPermissionRequest) returns (Group) {}
+    rpc CreateGroupPermission(CreateGroupPermissionRequest) returns (Group) {}
+    rpc DeleteGroupPermission(DeleteGroupPermissionRequest) returns (google.protobuf.Empty) {}
+
+    // // User Group
+    rpc FindAllUserGroups(FindAllUserGroupRequest) returns (FindAllUserGroupResponse) {}
+    rpc FindUserGroup(FindUserGroupRequest) returns (UserGroup) {}
+    rpc CreateUserGroup(CreateUserGroupRequest) returns (UserGroup) {}
+    rpc DeleteUserGroup(DeleteUserGroupRequest) returns (google.protobuf.Empty) {}
+}
